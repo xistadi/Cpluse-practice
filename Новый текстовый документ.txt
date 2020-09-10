@@ -1,0 +1,4284 @@
+Тип данных
+с плавающей
+float 4 - одинарной точности
+double 8 - двойной точности
+целые числа 
+int 4 
+short 2
+long 4 - пока не используем
+символьный тип
+char 1 - описывает символы
+логический тип 
+bool 1 - логические значения
+
+константа
+const int a = 1;
+
+инкремент дикремент / потфиксное и префиксное
+a++; ili a--;
+
+Сокращенные арифметические формы +=, -= и т д.
+a*=20;
+
+логические операции
+>, <, >=, <=, ==, !=, &&-и, ||-или, != - не.
+
+оператор if () {} else{}
+
+оператор switch (a){case 1 : действие break;
+default : действие не подходящее под a (можно не использовать)
+break;}
+
+while (a<10)
+{a++}
+
+do {} while (a<10);
+
+for (int i=0; i<10; i++)
+{}
+так же мы можем оставить for пустым for ( ; ; ) - бесконечный цикл
+
+if (i==5)
+{break;}
+
+if(i==5) {continue;} - пропуск a=5
+
+system ("pause")
+
+goto - лучше не использовать 
+link:
+goto link:
+
+
+Отладчик 
+F5
+F10-пошаговое
+F9-точка остановки на данной строке
+F5-следующая пауза
+Shift+F5-остановка отладки
+
+Вложенная функция
+for( ; ; ) {for ( ; ; ){}}
+
+Массивы
+int arr[4];
+cout << arr[0]<<endl;
+int arr[]={1,6,3}
+cout<<arr[2]<<endl;
+
+объявление одномерного массива
+const int size=10;
+int arr[size];
+for(int i=0;i<size;i++) - vvod
+{arr[i]=i;}
+for(int i=0;i<size;i++)-vivod
+{cout<<arr[i]<<endl;}
+
+sizeof - вывод количества памяти выделенной в байтах
+можно например использовать для определния размера массива size = sizeof(arr[])/sizeof(arr[0])
+
+Генератор рандомных чисел 
+rand(); - целые числа
+srand(); - точка начала рандомизации 
+Для полной рандомизации можно использовать время time(NULL) 
+#include <ctime>
+srand (time(NULL));
+
+Ограничение диапазона рандома
+rand()%10; - от 0 до 10
+rand()%10+5; - от 5 до 15
+
+двумерный массив
+const int ROW = 3;
+	const int COL = 4;
+	int arr[ROW][COL]{
+		{1,2,3,4},
+	{2,3,4,5},
+	{3,4,5,6}
+	};
+
+Ввод / вывод двумерного массива
+for (int i = 0; i < ROW; i++)
+	{
+		for (int j = 0; j < COL; j++)
+		{
+			arr[i][j] = rand() % 10;
+		}
+	}
+	for (int i = 0; i < ROW; i++)
+	{
+		for (int j = 0; j < COL; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout<<endl;
+	}
+
+
+Функции
+Объявление 
+int sum(int a, int b) 
+{
+	return a+b;
+}
+Вызов функции в программе 
+void main()
+{
+	cout << sum(3, 4) << endl;
+	system("pause");
+}
+
+Функция заполнения одномерного массива
+void  fillArray(int arr[],const int size)
+{
+	srand(time(NULL));
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+Функция вывода одномерного массива
+void PrintArray(int arr[], const int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+Прототип функции - в начале программы 
+Пример void foo();
+Прототип функции существует для объявления той самой функции в любой точке программы.
+
+Область видимости
+Глобальные и локальные переменные.
+Глобальными не желательно пользоваться.
+
+Аргументы (параметры) по умолчанию
+Должны быть объявлены в конце 
+void foo(int q, int a=5,double b=0.5)
+
+Ключевое слово inline. Встраиваемая функция
+inline int sum(int a, int b)
+{
+	return a + b;
+}
+Используется для простых функций без дополнительных сложных функций например if switch
+
+Перегрузка функции 
+int sum(int a, int b)
+{
+	return a + b;
+}
+
+double sum(double a, double b)
+{
+	return a + b;
+}
+
+Шаблонные функции
+template<typename T>
+T sum(T a, T b)
+{
+	return a + b;
+}
+
+template<typename T1, typename T2> 
+void sum(T1 a, T2 b)
+{
+	cout << a + b << endl;
+}
+
+Стек
+Последний зашел - первый вышел
+int foo(int a)
+{
+	if (a < 1)
+		return 0;
+	a--;
+	cout << a << endl;
+	return foo(a);
+}
+
+Рекурсия. Факториал.
+N! = N*(N-1)!
+2!=2*(2-1)!
+1!=1
+int fact(int n)
+{
+	if (n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	return n*fact(n - 1);
+	
+}
+
+Динамическая память 
+Указатель переменная которая содержит адрес другой переменной
+int a = 5;
+int *pa = &a; - тут хранится код ячейки памяти 
+*pa=2;
+
+Указатели и массивы
+const int SIZE = 5;
+	int arr[SIZE]{ 1,2,3,4,5 };
+	for (int i = 0; i < SIZE; i++)
+	{
+		cout << arr[i] << endl;
+	}
+	cout << "==================" << endl;
+	int *parr = arr; //указатель на первый элемент
+	cout <<"arr\t"<< arr << endl;
+	cout << "parr\t"<< parr << endl;
+	cout << "==================" << endl;
+	for (int i = 0; i < SIZE; i++)
+	{
+		cout << *(parr + i) << endl; //parr[i]=*(parr+i)
+	}
+
+Передача аргументов по указателю
+void foo(int *pa)
+{
+	(*pa)++;
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	int a = 0;
+	cout << a << endl;
+	foo(&a);
+	cout << a << endl;
+}
+
+Как вернуть два и более значения из функции.
+void foo(int *pa, int *pb,int *pc)
+{
+	(*pa)=555;
+	(*pb)++;
+	(*pc) = -20;
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	int a = 0, b = 0, c = 1;
+	cout <<"a= "<< a << endl;
+	cout << "b= " << b << endl;
+	cout << "c= " << c << endl;
+	cout << "Vizov foo" << endl;
+	foo(&a,&b,&c);
+	cout << "a= " << a << endl;
+	cout << "b= " << b << endl;
+	cout << "c= " << c << endl;
+
+	system("pause");
+}
+
+Ссылки
+int a = 5;
+int *pa = &a;
+int &aRef=a;
+int &aref = *pa;
+int*ppa = &aref;
+cout << aRef << endl; //vivedet 5
+
+Ссылочные параметры. Передача аргументов по ссылке
+void foo(int a)
+{
+	a = 1;
+}
+void foo2(int &a)
+{
+	a = 2;
+}
+
+void foo3(int *a)
+{
+	*a = 3;
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	int value = 5;
+	cout << "value= " << value << endl;
+
+	cout << "foo= " <<  endl;
+	foo(value);
+	cout << "value= " << value << endl;
+
+	cout << "foo2= " << endl;
+	foo2(value);
+	cout << "value= " << value << endl;
+
+	cout << "foo3= " << endl;
+	foo3(&value);
+	cout << "value= " << value << endl;
+}
+
+
+ШАБЛОННУЮ функцию которая меняет местами значения 2-х переменных с помощью ССЫЛОК
+template<typename T>
+void Swap(T &a, T &b)
+{
+T temp = a;
+a = b;
+b = temp;
+}
+
+
+Динамическая память 
+Оператор new
+int *pa=new int;
+*pa=10;
+Важно!!!  - после выделения памяти под указатель нужно его удалить только в с++ delete pa;
+
+NULL and nullpntr
+pa=NULL = тоже самое что и = pa=0
+int *pa=new int;
+*pa=10;
+cout<<*pa<<endl;
+delete pa;
+pa=nullptr;
+Проверка if(pa!=Nullpntr){cout<<pa<<endl;}
+
+Динамический массив 
+int size = 0;
+	cout << "vvedi" << endl;
+	cin >> size;
+	int *arr = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << "\t"; // znachenia
+		cout << arr +i << endl; // adress
+	}
+	delete[] arr;
+
+Двумерный динамический массив
+	int rows = 5;
+	int cols = 6;
+	int **arr = new int*[rows];
+	for (int i = 0; i < rows; i++) // обьявление
+	{
+		arr[i] = new int[cols];
+	}
+
+	for (int i = 0; i < rows; i++) // заполнение
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = rand() % 20;
+		}
+	}
+
+	for (int i = 0; i < rows; i++) //вывод
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+
+	for (int i = 0; i < rows; i++) //удаление
+	{
+		delete[] arr[i];
+	}
+
+	delete[]arr;
+
+Константные аргументы фукнции.// Копирование динамического массива
+void fillarray(int* const arr, const int size)
+{
+
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+
+
+void showarray(const int* const arr, const int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru"); 
+
+	int size = 10;
+	int *firstarray = new int[size];
+	int *secondarray = new int[size];
+
+	
+	fillarray(firstarray, size); // zapolnenie
+	fillarray(secondarray, size);
+
+	
+
+
+	cout << "firstarrray =\t";//vivod
+	showarray(firstarray, size);
+	cout << endl << "secondarrray =\t";
+	showarray(secondarray, size);
+	cout << endl;
+
+	delete[] firstarray;
+	firstarray = new int[size]; // copy secondarray v firstarray
+	for (int i = 0; i < size; i++)
+	{
+		firstarray[i] = secondarray[i];
+	}
+
+	cout << "===============================" << endl;
+	cout << "firstarrray =\t";//vivod
+	showarray(firstarray, size);
+	cout << endl << "secondarrray =\t";
+	showarray(secondarray, size);
+	cout << endl;
+
+	delete[] firstarray;
+	delete[] secondarray;
+system("pause");
+}
+
+
+Изменить размер массива удалить и добавить элементы в конце.
+void push_back(int*&arr, int &size, const int value)//dobavlenie poslednego
+{
+	int *newarr = new int[size + 1];
+
+	for (int i = 0; i < size; i++)
+	{     
+		newarr[i] = arr[i];
+	}
+
+
+	newarr[size] = value;
+	size++;
+	delete[] arr;
+	arr = newarr;
+
+
+}
+
+void pop_back(int*&arr, int &size)//ydalenie poslednego
+{
+	size--;
+	int *newarr = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		newarr[i] = arr[i];
+	}
+	delete[] arr;
+	arr = newarr;
+}
+
+
+Строки с++.
+char string [] = "Hello";
+char symbol = 's'; //odin simvol tolko
+char sting []={'h','e','l','l','o','\0'};// /0 - это нультерминатор
+coutMMstrlen(string)<<endl;//вывод колличества
+
+
+Приведение типов в стиле с.
+double a = 33.3;
+
+int b = 33.3344;
+
+cout << (int)a << endl; // 33
+cout << (bool)a << endl; // 1
+
+cout << (char)a << endl; // !
+
+cout << b << endl; // 33
+
+
+Таблица ASCII
+	for (int i = 0; i < 255; i++)
+	{
+		cout << "code = " << i << "\tchar= " << (char)i << endl;
+	}
+
+
+Строки указатели в с++
+void foo(char*str)
+{
+	cout << strlen(str) << endl; // vivod kollichestva baitov videlennogo dl9 stroki = 5
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	char str[] = "hello";
+
+
+	char *string = "hello"; // tozhe samoe shto i "char *string = str;"
+	cout << string << endl;
+
+	char *strarr[] = { "hello","world","test" };
+	for (int i = 0; i < 5; i++)
+	{
+		cout << strarr[i] << endl;
+	}
+
+	char *str = "hello";
+	foo(str);
+
+	system("pause");
+}
+
+
+Конкатенация строк
+char str1[255] = "hello";
+	char str2[255] = "world";
+
+	strcat(str1, str2); //dobalenie v str1 str2
+
+	cout << str1 << endl; 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+char result[255]{};
+
+	char str1[255] = "hello";
+	char str2[255] = "world";
+
+	strcat(result, str1); //dobalenie v result str1
+	strcat(result, str2); //dobalenie v result str2
+	cout << result << endl; 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#include<string>
+string str1 = "hello";
+	string str2 = "world";
+	string result;
+
+	result = str1 + str2;
+	cout <<result<<endl;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+string str1 = "Ivanov";
+	string str2 = "Oleg";
+	string str3 = "Vladimir";
+	string result;
+
+	result = "Familia " + str3 + "\tIma " + str2 + "\tOtchestvo " + str1;
+
+	cout <<result<<endl;
+
+
+Указатель на функцию 
+тип функции(*имя указателя)(спецификация параметров);
+void foo1()
+{
+	cout << "foo2" << endl;
+}
+
+void foo2()
+{
+	cout << "foo2" << endl;
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	void(*foopointer1)();
+	
+	foopointer1 = foo1;
+
+	foopointer1();
+	system("pause");
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+int foo1(int a)
+{
+	return a - 1;
+}
+
+int foo2(int a)
+{
+	return a * 2;
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	/*int(*foopointer1)(int a);
+	
+	foopointer1 = foo1;*/
+
+	cout<<foo1(5)<<endl;
+	system("pause");
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+string DataFromBD()
+{
+	return "Data from BD";
+}
+
+string DataFromWebServer()
+{
+	return "Data From Webserver";
+}
+
+void ShowInfo(bool isFromBD)
+{
+	if (isFromBD)
+	{
+		cout << DataFromBD() << endl;
+	}
+	else
+	{
+		cout << DataFromWebServer() << endl;
+	}
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+
+	ShowInfo(false);
+
+
+
+
+	system("pause");
+}
+////////////////////////////////////////////
+string GetDataFromBD()
+{
+	return "Data from BD";
+}
+
+string GetDataFromWebServer()
+{
+	return "Data From Webserver";
+}
+
+string GetDataFromAstral()
+{
+	return "Data From Astral";
+}
+
+void ShowInfo(string (*foo)())
+{
+	cout << foo() << endl;
+}
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+
+	ShowInfo(GetDataFromAstral);
+
+
+
+
+	system("pause");
+}
+//////////////////////////////////////////
+
+
+Препроцессор 
+#define PI 3.14
+#define tab "\t"
+using namespace std;
+
+
+
+
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	cout << PI << endl; // avtozamena PI na 3.14
+
+
+	cout << "text" << tab << "text" << endl; // tab zamena na "\t"
+
+	system("pause");
+}
+
+
+Макрос Функция 
+#define FOO(x,y) ((x)*(y))
+
+using namespace std;
+
+
+
+
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+
+	cout << FOO(5, 6) << endl;
+
+	system("pause");
+}
+
+
+Условная компиляция
+#define DEBUG // "//#define DEBUG"
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+#ifdef DEBUG // takzhe est "#ifndef" = naoborot 
+	cout << "DEBUG est" << endl;
+#else
+	cout << "DEBUG nety" << endl;
+#endif // DEBUG
+/////////////////////////////////////
+#define DEBUG 5
+
+void main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+#if DEBUG <4
+	cout << "hui" << endl;
+#elif DEBUG ==5
+	cout << "nehui" << endl;
+#endif // DEBUG
+
+
+Тернарный оператор 
+	int a;
+	cin >> a;
+	(a < 10) ? cout << "Men'she 10" << endl : cout << "bolshe"<<endl;
+//////////////////////////////////////////
+int a;
+	cin >> a;
+	(a < 10) ? cout << "Men'she 10" << endl: (a>10)? cout << "bolshe"<<endl:cout<<"ravno"<<endl;
+
+
+
+Что такое int argc, char* argv[]
+void main(int argc, char* argv[]) 
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	for (int i = 0; i < argc; i++)
+	{
+		cout << argv[i] << endl; // vivod mesta nashego exe
+	}
+
+
+
+int main vs void main
+pravilnee ispolzovat int main vazno return 0;
+
+
+ООП 
+Что такое класс и что такое объект класса
+class Human 
+{
+public:
+
+	int age;
+	int weight;
+	string name;
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	Human FirstHuman; // toshe samoe shto i "int a;"
+	FirstHuman.age = 30;
+	FirstHuman.name = "Oleg Huesos";
+	FirstHuman.weight = 120;
+	cout << FirstHuman.age << endl;
+	cout << FirstHuman.name << endl;
+	cout << "==================================" << endl;
+	Human SecondHuman;
+	SecondHuman.age = 28;
+	SecondHuman.name = "Maksim Huesos";
+	SecondHuman.weight = 80;
+	cout << SecondHuman.age << endl;
+	cout << SecondHuman.name << endl;
+	cout << SecondHuman.weight << endl;
+	system("pause");
+	return 0;
+
+	
+
+Методы красса. Функции класса.
+class Human 
+{
+public:
+
+	int age;
+	int weight;
+	string name;
+
+	void Print()
+	{
+		cout << "im9" << name << "\tVes" << weight << "\tVozrast" << age << endl;
+	}
+
+};
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	Human FirstHuman;
+	FirstHuman.age = 30;
+	FirstHuman.name = "Oleg";
+	FirstHuman.weight = 120;
+	FirstHuman.Print();
+
+	system("pause");
+	return 0;
+}
+
+
+Модификаторы доступа
+private: // po standarty - samomy klssy i druzestvennomy 
+public: // dostypen vsem
+protected: // raznica v nasledovanii 
+
+
+Геттеры и сеттеры. Инкапсуляция.
+class Point
+{
+private:
+
+	int x;
+	int y;
+
+public:
+
+	int GetX() 
+	{
+		return x;
+	}
+
+	void SetX(int valueX)
+	{
+		x = valueX;
+	}
+
+	void SetY(int valueY)
+	{
+		y = valueY*2;
+	}
+	int GetY()
+	{
+		return y;
+	}
+
+
+	void print()
+	{
+		cout << "x=" << x << "\ty=" << y << endl;
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	Point a;
+	a.SetX(5);
+	a.SetY(9);
+	a.print();
+	int result = a.GetX();
+	cout << result << endl;
+	
+	system("pause");
+	return 0;
+}
+
+
+Инкапсуляция пример ООП Кофемолка
+class CoffeeGrinder
+{
+private:
+
+	bool CheckVoltage()
+	{
+		return false;
+}
+
+public:
+	void start()
+	{
+		if (CheckVoltage())
+		{
+			cout << "Vzuh" << endl;
+		}
+		else
+		{
+			cout << "beep beep" << endl;
+		}
+	}
+
+
+
+};
+
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	CoffeeGrinder a;
+	a.start();
+	system("pause");
+	return 0;
+}
+
+
+Конструктор класса с параметрами. Конструктор по умолчанию.
+class Point
+{
+private:
+
+	int x;
+	int y;
+
+public:
+
+	Point(int valueX,int valueY)
+	{
+		x = valueX;
+		y = valueY;
+	}
+
+	int GetX() 
+	{
+		return x;
+	}
+
+	void SetX(int valueX)
+	{
+		x = valueX;
+	}
+
+	void SetY(int valueY)
+	{
+		y = valueY*2;
+	}
+	int GetY()
+	{
+		return y;
+	}
+
+
+	void print()
+	{
+		cout << "x=" << x << "\ty=" << y << endl;
+	}
+};
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	Point a(3,3);
+	
+	a.print();
+
+	Point b(4,5);
+	b.print();
+	
+	system("pause");
+	return 0;
+}
+
+
+Перегрузка конструкторов класса. Что такое перегрузка.
+class Point
+{
+private:
+
+	int x;
+	int y;
+
+public:
+
+	Point()
+	{
+		x = 0;
+		y = 0;
+	}
+
+	Point(int valueX,int valueY)
+	{
+		x = valueX;
+		y = valueY;
+	}
+
+	Point(int valueX, bool boolean)
+	{
+		x = valueX;
+		if (boolean)
+		{
+			y = 1;
+		}
+		else
+		{
+			y = -1;
+		}
+	}
+	
+	int GetX() 
+	{
+		return x;
+	}
+
+	void SetX(int valueX)
+	{
+		x = valueX;
+	}
+
+	void SetY(int valueY)
+	{
+		y = valueY*2;
+	}
+	int GetY()
+	{
+		return y;
+	}
+
+
+	void print()
+	{
+		cout << "x=" << x << "\ty=" << y << endl;
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	Point a;
+	a.print();
+	Point b(5, 14);
+	b.print();
+	Point c(3, true);
+	c.print();
+	system("pause");
+	return 0;
+}
+
+
+Деструктор
+class MyClass
+{
+	int data;
+
+public:
+	MyClass(int value)
+	{
+		data = value;
+
+		cout <<"obekt"<<data<< "Constryctor" << endl;
+	}
+
+	~MyClass()
+	{
+		cout <<"obekt"<<data<< "Destryktor" << endl;
+	}
+
+};
+
+void FOO()
+{
+	cout << "Foo nachalo" << endl;
+	MyClass a(1);
+	cout << "foo konec" << endl;
+}
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	FOO();
+
+	system("pause");
+	return 0;
+	
+}
+/////////////////////////////////////////////////
+class MyClass
+{
+private:
+	int* data;
+
+public:
+	MyClass(int size)
+	{
+		data = new int[size];
+		for (int i = 0; i < size; i++)
+		{
+			data[i] = i;
+		}
+		cout <<"obekt"<<data<< "Constryctor" << endl;
+	}
+
+	~MyClass()
+	{
+		delete[] data;
+		cout <<"obekt"<<data<< "Destryktor" << endl;
+	}
+
+};
+
+void FOO()
+{
+	cout << "Foo nachalo" << endl;
+	MyClass a(1);
+	cout << "foo konec" << endl;
+}
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	FOO();
+
+	system("pause");
+	return 0;
+	
+}
+
+
+Ключевое слово this. 
+Указатель объекта на самого себя.
+Информация о том где он находится в памяти.(адрес в памяти)
+
+
+Конструктор копирования.
+class MyClass {
+public:
+	int *data;
+	MyClass(int size)
+	{
+		this->Size = size;
+		this->data = new int[size];
+		for (int i = 0; i < size; i++)
+		{
+			data[i] = i;
+		}
+		cout << "constryktor" << this << endl;
+       };
+	MyClass(const MyClass &other)
+	{
+		this->Size = other.Size;
+
+		this->data = new int[other.Size];
+		for (int i = 0; i < other.Size; i++)
+		{
+			this->data[i] = other.data[i];
+		}
+		cout << "constryktor kopirovania" << this << endl;
+	}
+	
+
+	~MyClass()
+	{
+		cout << "destryktor" << this << endl;
+		delete[] data;
+	};
+private:
+	int Size;
+};
+
+
+Перегрузка оператора = (присваивания)
+class MyClass {
+public:
+	int *data;
+	MyClass(int size)
+	{
+		this->Size = size;
+		this->data = new int[size];
+		for (int i = 0; i < size; i++)
+		{
+			data[i] = i;
+		}
+		cout << "constryktor" << this << endl;
+       };
+	MyClass(const MyClass &other)
+	{
+		this->Size = other.Size;
+
+		this->data = new int[other.Size];
+		for (int i = 0; i < other.Size; i++)
+		{
+			this->data[i] = other.data[i];
+		}
+		cout << "constryktor kopirovania" << this << endl;
+	}
+	
+
+	MyClass & operator = (const MyClass &other)
+	{
+		cout << "prisvaivanie" << this << endl;
+		this->Size = other.Size;
+		if (this->data != nullptr)
+		{
+			delete[] this->data;
+		}
+		this->data = new int[other.Size];
+		for (int i = 0; i < other.Size; i++)
+		{
+			this->data[i] = other.data[i];
+		}
+		return *this;
+	}
+
+
+	~MyClass()
+	{
+		cout << "destryktor" << this << endl;
+		delete[] data;
+	};
+private:
+	int Size;
+};
+
+
+Перегрузка оператора == и !=
+bool operator ==(const Point & other)
+	{
+			return this->x == other.x && this->y == other.y;
+	}
+bool operator !=(const Point & other)
+	{
+		return !(this->x == other.x && this->y == other.y);
+	}
+
+
+Перегрузка операторов сложения
+	Point operator + (const Point& other)
+	{
+		Point temp;
+		temp.x = this->x + other.x;
+		temp.y = this->y + other.y;
+		return temp;
+	}
+
+
+Перегрузка инкремента и декремента 
+Point & operator ++() // prefiksna9
+	{
+		this->x++;
+		this->y += 1; // odno i to ze
+		return *this;
+	}
+
+
+	Point & operator ++(int value) // postfiksna9
+	{
+	
+		Point temp(*this);
+		this->x++;
+		this->y++;
+		return temp;
+
+	}
+Декремент тоже самое только с -- вместо ++
+
+
+Перегрузка оператора индексирования []
+class TestClass
+{
+public:
+	int & operator[](int index)
+	{
+		return arr[index];
+	}
+
+private:
+	int arr[5]{ 5,44,5,987,23 };
+};
+
+
+Дружественная функция
+friend void ChangeX(Point &value);
+Определение дружественной функции не важно где 
+
+
+Дружественный метод класса. ООП. friend c++ что это. Функции друзья. C++ Для начинающих. Урок#90
+class Human;
+class Apple;
+
+class Apple
+{
+public:
+	Apple(int weight, string color)
+	{
+		this->weight = weight;
+		this->color = color;
+	}
+private : 
+	int weight;
+	string color;
+	friend void Human::TakeApple(Apple &apple);
+};
+
+class Human
+{
+public: 
+	void TakeApple(Apple &apple);
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	Apple apple(150, "red");
+	
+	Human human;
+	human.TakeApple(apple);
+
+	system("pause");
+	return 0;
+}
+
+void Human::TakeApple(Apple & apple)
+{
+	cout << "TakeApple" << "weight = " << apple.weight << endl;
+}
+
+
+Дружественные классы. ООП. friend class. friend c++ что это. C++ Для начинающих. Урок #91
+friend Human; // дружественный класс хуман для аппл
+
+
+static что это. Статические поля класса. Инициализация. Ключевое слово static. C++ #92
+class Apple
+{
+	
+public:
+
+	static int Count;
+
+
+	Apple(int weight, string color)
+	{
+		this->weight = weight;
+		this->color = color;
+		Count++;
+	}
+private : 
+	int weight;
+	string color;
+
+};
+
+int Apple::Count = 0;
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	Apple apple(150, "red");
+	Apple apple2(2, "red");
+	cout << apple.Count << endl;
+	cout << Apple::Count << endl;
+
+	system("pause");
+	return 0;
+}
+
+id generator. Генератор уникальных идентификаторов с использованием static переменной Начинающим #93
+class Apple
+{
+	
+public:
+
+	static int Count;
+
+
+	Apple(int weight, string color)
+	{
+		this->weight = weight;
+		this->color = color;
+		Count++;
+		id = Count;
+	}
+	int GetId()
+	{
+		return id;
+	}
+
+private : 
+	int weight;
+	string color;
+	int id;
+};
+
+int Apple::Count = 0;
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	Apple apple1(150, "red");
+	Apple apple2(150, "blue");
+	Apple apple3(400, "red");
+
+	cout << apple1.GetId() << endl;
+	cout << apple2.GetId() << endl;
+	cout << apple3.GetId() << endl;
+
+	system("pause");
+	return 0;
+}
+
+
+Статические методы класса зачем нужны. Модификатор static. Как влияет. ООП. Для начинающих. Урок #94
+class Apple
+{
+	
+public:
+
+	Apple(int weight, string color)
+	{
+		this->weight = weight;
+		this->color = color;
+		Count++;
+		id = Count;
+	}
+	int GetId()
+	{
+		return id;
+	}
+
+	static int GetCount()
+	{
+		return Count;
+	}
+
+	static void ChangetColor(Apple &apple, string color)
+	{
+		apple.color = color;
+	}
+
+private : 
+	int weight;
+	string color;
+	int id;
+	static int Count;
+};
+
+int Apple::Count = 0;
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	
+
+	Apple apple1(150, "red");
+	Apple apple2(150, "blue");
+	Apple apple3(400, "red");
+
+	apple1.ChangetColor(apple1, "green");
+	Apple::ChangetColor(apple2, "red"); //tozhe samoe chto i vishe
+
+
+	cout << apple1.GetId() << endl;
+	cout << apple2.GetId() << endl;
+	cout << apple3.GetId() << endl;
+
+
+	cout << Apple::GetCount << endl;
+
+	system("pause");
+	return 0;
+}
+
+
+Вложенные классы с++ пример. Внутренние классы. Зачем нужны. inner class. ООП. Для начинающих #95
+Вложенный класс
+class Image
+{
+public:
+
+	void GetImageInfo()
+	{
+		for (int i = 0; i < LEHGTH; i++)
+		{
+			cout<<"#"<<i<<" "<<pixels[i].GetInfo()<< endl;
+		}
+	}
+	
+private:
+	class Pixel
+	{
+	public:
+		Pixel(int r, int g, int b)
+		{
+			this->r = r;
+			this->g = g;
+			this->b = b;
+		}
+
+		string GetInfo()
+		{
+			return "Pixel: r=" + to_string(r) + "g= " + to_string(g) + "b= " + to_string(g);
+		}
+
+	private:
+		int r;
+		int g;
+		int b;
+	};
+
+	static const int LEHGTH = 5;
+
+	Pixel pixels[LEHGTH]
+	{
+		Pixel(0,4,64),
+		Pixel(4,14,10),
+		Pixel(111,4,24),
+		Pixel(244,255,14),
+		Pixel(111,179,64),
+	};
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	
+	Image img;
+
+	img.GetImageInfo();
+
+	system("pause");
+	return 0;
+}
+
+
+Массив объектов класса. Динамический. Статический. Создание Особенности. ООП C++ Для начинающих #96
+class Pixel
+{
+public:
+	Pixel()
+	{
+		r = g = b = 0;
+	}
+	Pixel(int r, int g, int b)
+	{
+		this->r = r;
+		this->g = g;
+		this->b = b;
+	}
+
+	string GetInfo()
+	{
+		return "Pixel: r=" + to_string(r) + "g= " + to_string(g) + "b= " + to_string(g);
+	}
+
+private:
+	int r;
+	int g;
+	int b;
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+	const int LENGTH = 5;
+
+	Pixel arr[LENGTH];
+
+	arr[0] = Pixel(11, 159, 222);
+
+	cout<<arr[0].GetInfo << endl;
+
+	int dinLENGTH = 5;
+	Pixel *arr1 = new Pixel[dinLENGTH];
+
+	arr1[0] = Pixel(11, 55, 44);
+	cout << arr[0].GetInfo() << endl;
+	delete[]arr1;
+
+	system("pause");
+	return 0;
+}
+
+
+
+Что такое агрегация и композиция. Отношения между классами и объектами. ООП. C++ Для начинающих #97
+Включение одного класса в другой.
+Агрегация позволяет использовать тот клас который мы ключаем в другой класс еще и в других местах с другими классами.
+При композиции более строго - при композиции класс который включается в другой класс без этого класса не может существовать 
+class Human
+{
+public:
+	void Think()
+	{
+		brain.Think();
+	}
+private:
+	class Brain {
+	public:
+		void Think()
+		{
+			cout << "9 duma0!" << endl;
+		}
+	};
+	Brain brain;
+}; 
+Это пример композиции.
+
+Пример агрегации : Здесь не зависящий класс это кепка мы ее модем надеть на человка и на модел
+
+class Cap // ne zavisit ot klassa human
+{
+public:
+	string GetColor() 
+	{
+		return color;
+	}
+private:
+	string color = "red";
+};
+
+class Model
+{
+public:
+	void InspectModel()
+	{
+		cout << "Kepka" << cap.GetColor() << "cveta" << endl;
+	}
+private:
+	Cap cap;
+};
+
+
+class Human
+{
+public:
+	void Think()
+	{
+		brain.Think();
+	}
+
+	void InspectTheCap()
+	{
+		cout << "Cap = " << cap.GetColor() << "cveta" << endl;
+	}
+
+private:
+	class Brain {
+	public:
+		void Think()
+		{
+			cout << "9 duma0!" << endl;
+		}
+	};
+	Brain brain;
+	Cap cap;
+};
+
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+	Human human;
+	human.Think();
+	human.InspectTheCap();
+
+	Model m;
+	m.InspectModel();
+
+
+	system("pause");
+	return 0;
+}
+
+
+Наследование в ООП пример. Что такое наследование. Для чего нужно наследование классов. ООП. C++ #98
+class Human
+{
+private:
+	string name="Oleg Dolbaeb";
+public:
+	string GetName()
+	{
+		return name;
+	}
+	void SetName(string name)
+	{
+		this->name = name;
+	}
+};
+
+class Stydent :public Human
+{
+public:
+	
+	string group;
+
+	void  learn()
+	{
+		cout << "9 ychys" << endl;
+	}
+
+};
+
+class ExtramuralStydent :public Stydent
+{
+public:
+	void  learn()
+	{
+		cout << "9 ychys na saochke" << endl;
+	}
+
+};
+
+
+class Professor :public Human
+{
+public:
+
+	string subject;
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	Stydent st;
+	
+	st.learn();
+	st.SetName("Dolbaeb");
+	cout << st.GetName() << endl;
+	Professor pr;
+
+	ExtramuralStydent extraSt;
+	extraSt.learn();
+	extraSt.SetName("neDolbaeb");
+	cout << extraSt.GetName() << endl;
+
+	system("pause");
+	return 0;
+}
+
+
+Модификаторы доступа при наследовании. private public protected Спецификаторы доступа. ООП. C++ #99
+class A
+{
+public: // dostypno vsem 
+	string msgOne = "Soobsh Odin";
+private: // ne dostypno dl9 vseh
+	string msgTwo = "Soobsh Dwa";
+protected: // na urovne ob'ekta obratits9 ne mozem naprimer v int main no v naslednike obrathats9 mothem primer v class B
+	string msgThree = "Soobsh Tre";
+};
+
+class B :public A
+{
+public:
+	void PrintMsg()
+	{
+		cout << msgThree << endl; // vot mothem
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	B b;
+	b.PrintMsg();
+
+	b.msgOne;
+
+b.msgThree // eto primer obratits9 ne mothem 
+
+	system("pause");
+	return 0;
+}
+Так же есть картинка наследования в папке
+
+
+Порядок вызова конструкторов при наследовании. Как вызываются конструкторы. ООП C++ Начинающим #100
+class A
+{
+public:
+	A()
+	{
+		cout << "Konstryktor A" << endl;
+	}
+
+
+};
+
+class B :public A
+{
+public:
+	B()
+	{
+		cout << "Konstryktor B" << endl;
+	}
+
+
+};
+
+class C :public B
+{
+public:
+	C()
+	{
+		cout << "Konstryktor C" << endl;
+	}
+};
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	C value; // vivedets9 vse konstryktory
+
+	system("pause");
+	return 0;
+}
+
+
+Порядок вызова деструкторов при наследовании. Деструкторы. ООП C++ Для начинающих. Урок #101
+A - B - C - конструктор С - В - А - деструктор 
+
+
+Вызов конструктора базового класса из конструктора класса-наследника. Наследование. ООП C++ #102
+class A
+{
+public:
+	A()
+	{
+		msg = "sosat";
+	}
+	A(string msg)
+	{
+		this->msg = msg;
+	}
+	void PrintMsg()
+	{
+		cout << msg << endl;
+	}
+private:
+	string msg;
+
+};
+
+class B :public A
+{
+public:
+	B():A("haa") // bez etogo mi popadaem v stantartni konstryktor A()
+	{
+		
+	}
+};
+
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+	B value;
+	value.PrintMsg();
+
+
+	system("pause");
+	return 0;
+}
+
+
+Виртуальные методы класса c++. Ключевое слово virtual. Ключевое слово override. ООП. C++ #103
+class Gun
+{
+public:
+
+	virtual void Shoot()
+	{
+		cout << "BANG!!" << endl;
+	}
+};
+
+class SubmachineGun :public Gun
+{
+public:
+	void Shoot() override // proverka Shoot
+	{
+		cout << "BANG! BANG! BANG!" << endl;
+	}
+};
+
+class Bazooka :public Gun
+{
+public:
+	void Shoot() override // proverka Shoot
+	{
+		cout << "BOOM" << endl;
+	}
+};
+
+class Player
+{
+public:
+	void Shoot(Gun *gun)
+	{
+		gun->Shoot();
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	Gun gun;
+	SubmachineGun machinegun;
+	Bazooka bazooka;
+	Player player;
+	player.Shoot(&bazooka);
+
+	system("pause");
+	return 0;
+}
+
+
+Абстрактный класс с++ пример. Чисто виртуальная функция. virtual. override. Полиморфизм ООП C++ #104
+class Weapon
+{ 
+public:
+	virtual void Shoot() = 0; // virtyalna9 funcia
+	void Foo()
+	{
+		cout << "Foo()" << endl;
+	}
+};
+
+class Gun :public Weapon
+{
+public:
+
+	virtual void Shoot() override
+	{
+		cout << "BANG!!" << endl;
+	}
+};
+
+
+
+class SubmachineGun :public Gun
+{
+public:
+	void Shoot() override // proverka Shoot
+	{
+		cout << "BANG! BANG! BANG!" << endl;
+	}
+};
+
+class Bazooka :public Weapon
+{
+public:
+	void Shoot() override // proverka Shoot
+	{
+		cout << "BOOM" << endl;
+	}
+};
+
+
+
+class Knife :public Weapon
+{
+public:
+	void Shoot() override
+	{
+		cout << "Vzuh" << endl;
+	}
+};
+
+
+class Player
+{
+public:
+	void Shoot(Weapon *weapon)
+	{
+		weapon->Shoot();
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	Player player;
+	Gun gun;
+	SubmachineGun machinegun;
+	Bazooka bazooka;
+	Knife knife;
+	player.Shoot(&knife);
+
+
+	knife.Foo();
+	bazooka.Foo();
+
+
+	system("pause");
+	return 0;
+}
+
+
+Виртуальный деструктор класса C++. Что это такое. Наследование. Полиморфизм. Для начинающих #105
+class A
+{
+public:
+	A()
+	{
+		cout << "videlena din pam9t A" << endl;
+	}
+	virtual ~A()
+	{
+		cout << "osvobozdena din pam9t A" << endl;
+	}
+};
+
+class B :public A
+{
+public:
+	B()
+	{
+		cout << "videlena din pam9t B" << endl;
+	}
+	~B() override
+	{
+		cout << "osvobozdena din pam9t B" << endl;
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	A *bptr=new B;
+
+	delete bptr;
+
+	system("pause");
+	return 0;
+}
+
+
+Чисто виртуальный деструктор c++. Наследование. Полиморфизм. virtual. override. Для начинающих #106
+class A
+{
+public:
+	A()
+	{
+		
+	}
+	virtual ~A() = 0;
+	
+};
+
+A::~A() {};
+
+class B :public A
+{
+public:
+	B()
+	{
+		
+	}
+	~B() override
+	{
+		
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	A *bptr=new B;
+
+	delete bptr;
+
+	system("pause");
+	return 0;
+}
+
+
+Делегирующие конструкторы c++. Вызов конструктора из конструктора. ООП. С++ Для начинающих. #107
+class Human
+{
+public:
+
+	Human(string Name)
+	{
+		this->Name = Name;
+		this->Age = 0;
+		this->Weight = 0;
+	}
+
+	Human(string Name,int Age):Human(Name)
+	{
+		this->Age = Age;
+	}
+
+	Human(string Name, int Age,int Weight):Human(Name,Age)
+	{
+		this->Weight = Weight;
+	}
+
+
+	string Name;
+	int Age;
+	int Weight;
+};
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	Human h1("Daun");
+	Human h2("Daun", 30);
+	Human h3("Daun",30,70);
+
+	system("pause");
+	return 0;
+}
+
+
+c++ вызов виртуального метода базового класса. ООП. Изучение с++ с нуля. Для начинающих. Урок #108
+class Msg
+{
+public:
+	Msg(string msg)
+	{
+		this->msg = msg;
+	}
+	virtual string GetMsg()
+	{
+		return msg;
+	}
+private:
+	string msg;
+};
+
+
+class BreaketMsg :public Msg
+{
+public:
+	BreaketMsg(string msg) :Msg(msg)
+	{
+
+	}
+	string GetMsg() override
+	{
+		return "[" + ::Msg::GetMsg() + "]";
+	}
+};
+
+class Printer
+{
+public:
+	void Print(Msg *msg)
+	{
+		cout << msg->GetMsg() << endl;
+	}
+};
+
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	BreaketMsg m("Privet");
+	Printer p;
+	p.Print(&m);
+
+
+
+	system("pause");
+	return 0;
+}
+
+
+Множественное наследование c++ пример. ООП. Изучение С++ с нуля для начинающих. Урок #109
+class Car
+{
+public:
+	string str1 = "Pole mashina";
+	void Drive()
+	{
+		cout << "Edy" << endl;
+	}
+};
+
+class Airplain
+{
+public:
+	string str2 = "Pole samolet";
+	void Fly()
+	{
+		cout << "Letim" << endl;
+	}
+};
+
+class FlyingCar : public Car, public Airplain
+{
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	Car c;
+	c.Drive();
+	Airplain a;
+	a.Fly();
+
+
+	FlyingCar fc;
+	fc.Drive();
+	fc.Fly();
+
+	fc.str1;
+	fc.str2;
+
+	Car *ptrC = &fc;
+
+	Airplain *ptrA = &fc;
+
+	system("pause");
+	return 0;
+}
+
+
+Порядок вызова конструкторов при множественном наследовании. ООП. С++ начинающих. Урок #110
+CTOR - ENTER автосоздание конструктора класса
+class Car
+{
+public:
+	Car()
+	{
+		cout << "Constryktor Car" << endl;
+	}
+	string str1 = "Pole mashina";
+	void Drive()
+	{
+		cout << "Edy" << endl;
+	}
+};
+
+class Airplain
+{
+public:
+	Airplain()
+	{
+		cout << "Constryktor AirPlane" << endl;
+	}
+	string str2 = "Pole samolet";
+	void Fly()
+	{
+		cout << "Letim" << endl;
+	}
+};
+
+class FlyingCar : public Car, public Airplain
+{
+public:
+	FlyingCar()
+	{
+		cout << "Constryktor FlyingCar" << endl;
+	}
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	FlyingCar fc;
+	
+
+	system("pause");
+	return 0;
+}
+
+
+Порядок вызова деструкторов при множественном наследовании. ООП. С++ начинающих. Урок #111
+class Car
+{
+public:
+	Car()
+	{
+		cout << "Constryktor Car" << endl;
+	}
+	~Car()
+	{
+		cout << "Destryktor Car" << endl;
+	}
+
+	string str1 = "Pole mashina";
+	void Drive()
+	{
+		cout << "Edy" << endl;
+	}
+};
+
+class Airplain
+{
+public:
+	Airplain()
+	{
+		cout << "Constryktor AirPlane" << endl;
+	}
+
+	~Airplain()
+	{
+		cout << "Destryktor Airplain" << endl;
+	}
+
+	string str2 = "Pole samolet";
+	void Fly()
+	{
+		cout << "Letim" << endl;
+	}
+};
+
+class FlyingCar : public Car, public Airplain
+{
+public:
+	FlyingCar()
+	{
+		cout << "Constryktor FlyingCar" << endl;
+	}
+	~FlyingCar()
+	{
+		cout << "Destryktor FlyingCar" << endl;
+	}
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	FlyingCar fc; // деструктор матрешкой 
+	
+
+	system("pause");
+	return 0;
+}
+
+
+С++ множественное наследование одинаковые методы. ООП. Изучение С++ для начинающих. Урок #112
+class Car
+{
+public:
+	Car()
+	{
+		cout << "Constryktor Car" << endl;
+	}
+	~Car()
+	{
+		cout << "Destryktor Car" << endl;
+	}
+
+	string str1 = "Pole mashina";
+	void Use()
+	{
+		cout << "Edy" << endl;
+	}
+};
+
+class Airplain
+{
+public:
+	Airplain()
+	{
+		cout << "Constryktor AirPlane" << endl;
+	}
+
+	~Airplain()
+	{
+		cout << "Destryktor Airplain" << endl;
+	}
+
+	string str2 = "Pole samolet";
+	void Use()
+	{
+		cout << "Letim" << endl;
+	}
+};
+
+class FlyingCar : public Car, public Airplain
+{
+public:
+	FlyingCar()
+	{
+		cout << "Constryktor FlyingCar" << endl;
+	}
+	~FlyingCar()
+	{
+		cout << "Destryktor FlyingCar" << endl;
+	}
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	
+	FlyingCar fc;
+	((Car)fc).Use(); // edem
+	((Airplain)fc).Use(); // letim
+
+
+	system("pause");
+	return 0;
+}
+
+
+Что такое интерфейс в ООП. Интерфейс c++ пример. Изучение С++ для начинающих. Урок #113
+class IBicycle
+{
+public:
+	void virtual TwistTheWheel() = 0;
+	void virtual Ride() = 0;
+};
+
+class SimpleBicycle :public IBicycle
+{
+public:
+	void TwistTheWheel() override
+	{
+		cout << "metod TwistTheWheel y simpla" << endl;
+	}
+	void  Ride() override
+	{
+		cout << "metod Ride y simpla" << endl;
+	}
+};
+
+
+class SportBicycle :public IBicycle
+{
+public:
+	void TwistTheWheel() override
+	{
+		cout << "metod TwistTheWheel y sport" << endl;
+	}
+	void  Ride() override
+	{
+		cout << "metod Ride y sport" << endl;
+	}
+};
+
+class Human
+{
+public:
+	void RideOn(IBicycle &bicycle)
+	{
+		cout << "Krytim ryl" << endl;
+		bicycle.TwistTheWheel();
+		cout << "Poexali" << endl;
+		bicycle.Ride();
+	}
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	SimpleBicycle simple;
+
+	SportBicycle sport;
+
+	Human h;
+	h.RideOn(simple);
+	cout << endl;
+	h.RideOn(sport);
+	system("pause");
+	return 0;
+}
+
+
+Виртуальное наследование c++. Ромбовидное наследование c++. Изучение С++ для начинающих. Урок #114
+class Component
+{
+public:
+	Component(string companyName)
+	{
+		cout << "constryktor Detali" << endl;
+	this->companyName = companyName;
+	}
+	string companyName;
+};
+
+
+class GPU :public Component
+{
+public:
+	GPU(string companyName) :Component(companyName)
+	{
+		cout << "Konstryktor GPU" << endl;
+	}
+};
+
+class Memory : public Component
+{
+public:
+	Memory(string companyName) :Component(companyName)
+	{
+		cout << "Konstryktor Memory" << endl;
+	}
+};
+
+
+class GraphicCard : public GPU,public Memory
+{
+public:
+	GraphicCard(string GPUcompanyName,string MemorycompanyName) :GPU(GPUcompanyName),Memory(MemorycompanyName)
+	{
+		cout << "Konstryktor GraphicCard" << endl;
+	}
+};
+
+
+class Character
+{
+public:
+	Character()
+	{
+		cout << "konstryktor Character" << endl;
+	}
+	int HP;
+};
+
+class Orc :public virtual Character // raznica v tom chto vizivaetc9 odin Character
+{
+public:
+	Orc()
+	{
+		cout << "konstryktor Orc" << endl;
+	}
+};
+
+class Warrior :public  Character
+{
+public:
+	Warrior()
+	{
+		cout << "konstryktor Warrior" << endl;
+	}
+};
+class OrcWarrior :public Orc, public Warrior
+{
+public:
+	OrcWarrior()
+	{
+		cout << "konstryktor OrcWarrior" << endl;
+	}
+};
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	OrcWarrior orc;
+
+	system("pause");
+	return 0;
+}
+
+
+
+Работа с файлами с++. Запись в файл. c++ ofstream. Изучение С++ для начинающих. Урок #115
+//#include <fstream>
+//fstream universalnii
+//ifstream input 
+//ofstream output
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	string path = "myFile.txt";
+
+	ofstream fout;
+	fout.open(path,ofstream::app);
+
+	if (!fout.is_open())
+	{
+		cout << "Oshibka pri otkritii" << endl;
+
+	}
+	else
+	{
+		cout << "Vvedite chiuslo" << endl;
+		int a;
+		cin >> a;
+		fout << a;
+	}
+	fout.close();
+
+
+	system("pause");
+	return 0;
+}
+
+
+Работа с файлами с++. Чтение из файла с++ ifstream. Изучение С++ для начинающих. Урок #116
+ifstream fin;
+	fin.open(path);
+	if (!fin.is_open())
+	{
+		cout << "Oshibka pri otkritii" << endl;
+	}
+
+	else
+	{
+		cout << "file otkrit" << endl;
+	
+		string str;
+		while (!fin.eof())
+		{
+			str = "";
+			getline(fin, str);
+			cout << str << endl;
+		}
+	}
+	fin.close();
+
+	system("pause");
+	return 0;
+}
+
+
+Запись ОБЪЕКТА КЛАССА в файл с++. Чтение объекта из файла c++ Для начинающих. Урок #117
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	string path = "myFile.txt";
+
+	Point point(5, 10, 46);
+
+
+	ofstream fout;
+	fout.open(path, ofstream::app);
+
+	if (!fout.is_open())
+	{
+		cout << "Oshibka pri otkritii" << endl;
+	}
+	else
+	{
+		cout << "File otkrit" << endl;
+		fout.write((char*)&point, sizeof(Point));
+	}
+	fout.close();
+	ifstream fin;
+	fin.open(path);
+	if (!fin.is_open())
+	{
+		cout << "Oshibka pri otkritii" << endl;
+	}
+
+	else
+	{
+		cout << "file otkrit" << endl;
+		Point pnt;
+		while (fin.read((char*)&pnt, sizeof(Point)))
+		{
+			pnt.Print();
+		}
+	}
+	fin.close();
+	system("pause");
+	return 0;
+}
+
+
+
+Чтение и запись в файл с++ используя класс fstream c++. Изучение С++ для начинающих. Урок #118
+fstream fc;
+	fc.open(path,fstream::in | fstream::out | fstream::app);
+	
+	if (!fc.is_open())
+	{
+		cout << "oshibka pri otkritii" << endl;
+	}
+	else
+	{
+		string msg;
+		int value;
+		cout << "File otkrit" << endl;
+
+		cout << "Nazmitye 1 dly zapisi msg" << endl;
+		cout << "Nazmitye 2 dl9 chityvania" << endl;
+		cin >> value;
+		if (value==1)
+		{
+			cout << "Vvedite msg" << endl;
+			SetConsoleCP(1251);
+			cin >> msg;
+			fc << msg << "\n";
+			SetConsoleCP(886);
+		}
+		if (value == 2)
+		{
+			cout << "Chtenie dannix" << endl;
+			while (fc.eof())
+			{
+				msg = "";
+				fc >> msg;
+				cout << msg << endl;
+			}
+		}
+
+	}
+	system("pause");
+	return 0;
+}
+
+
+Потоковый ввод вывод в файл c++. Перегрузка операторов. Изучение С++ для начинающих. Урок #119
+class Point
+{
+public:
+	Point()
+	{
+		x = y = z = 0;
+	}
+	Point(int x, int y,int z)
+	{
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+	
+private:
+	int x;
+	int y;
+	int z;
+	friend ostream& operator<<(ostream& os, const Point& point);
+	friend istream& operator>>(istream& is, Point& point);
+};
+
+ostream& operator<<(ostream& os, const Point& point) // operator vivoda
+{
+	os << point.x << " " << point.y << " " << point.z;
+
+	return os;
+}
+
+istream& operator>>(istream& is, Point& point) // operator vvoda chteni9 iz fila
+{
+	is >> point.x >> point.y >> point.z;
+
+	return is;
+}
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	string path = "myFile.txt";
+	Point point(121, 245, 241);
+cout << point;
+
+fstream fc;
+fc.open(path, fstream::in | fstream::out | fstream::app);
+
+if (!fc.is_open())
+{
+	cout << "oshibka pri otkritii" << endl;
+}
+else
+{
+	cout << "File otkrit" << endl;
+	fc << point << "\n";
+
+	while (true)
+	{
+		Point p;
+		fc >> p;
+		if (fc.eof())
+		{
+			break;
+		}
+		cout << p << endl;
+	}
+
+}
+
+	system("pause");
+	return 0;
+}
+
+
+С++ try catch. Обработка исключений С++. try catch что это. Изучение С++ для начинающих. Урок #120
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	string path = "myFile.tx";
+	ifstream fin;
+fin.exceptions(ifstream::badbit | ifstream::failbit);
+
+try
+{
+	cout << "Popitka otkriti9" << endl;
+	fin.open(path);
+	cout << "Yshpeshno otkrit" << endl;
+}
+catch (const ifstream::failure& ex)
+{
+	cout << ex.what() << endl;
+	cout << ex.code() << endl;
+	cout << "Oshibka" << endl;
+}
+
+
+	system("pause");
+	return 0;
+}
+
+
+Генерация исключений с++ пример. throw c++ пример. Изучение С++ для начинающих. Урок #121
+void Foo(int value)
+{
+	if (value < 0)
+	{
+		throw exception("Chislo menshe 0 !!!");
+	}
+	
+	cout << "Peremenna9 = " << value << endl;
+}
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+	try
+{
+	Foo(-55);
+
+}
+catch (exception &ex)
+{
+	cout << ex.what() << endl;
+}
+
+
+	system("pause");
+	return 0;
+}
+
+
+
+Несколько блоков catch. Обработка исключений С++. Изучение С++ для начинающих. Урок #122
+void Foo(int value)
+{
+	if (value < 0)
+	{
+		throw "Chislo menshe 0 !!!";
+	}
+
+	if (value == 0)
+	{
+		throw exception("Chislo ravno 0!!!");
+	}
+	
+	if (value == 1)
+	{
+		throw 1;
+	}
+
+
+
+	cout << "Peremenna9 = " << value << endl;
+}
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+try
+{
+	Foo(1);
+
+}
+catch (exception &ex)
+{
+	cout << "Block 1"<< ex.what() << endl;
+}
+catch (const char *ex)
+{
+	cout<<"Block 2 Mi poimali" << ex << endl;
+}
+
+catch (...)
+{
+	cout << "Shtoto poshlo ne tak" << endl;
+}
+	system("pause");
+	return 0;
+}
+
+
+Свой класс exception c++. Создание собственного класса исключений. С++ для начинающих. Урок #123
+class MyException :public exception
+{
+public:
+	MyException(char *msg,int dataState):exception(msg)
+	{
+		this->dataState = dataState;
+
+	}
+	int GetDataState()
+	{
+		return dataState;
+	}
+private:
+	int dataState;
+};
+
+void Foo(int value)
+{
+	if (value < 0)
+	{
+		throw "Chislo menshe 0 !!!";
+	}
+	if (value == 1)
+	{
+		throw MyException("Chislo = 1!!!",value);
+	}
+	cout << "Peremenna9 = " << value << endl;
+}
+
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+try
+{
+	Foo(-1);
+
+}
+catch (MyException &ex)
+{
+	cout << "Block 1"<< ex.what() << endl;
+	cout << "Sosto9nie dannyh " << ex.GetDataState() << endl;
+}
+
+catch (exception &ex)
+{
+	cout << "Block 2" << ex.what() << endl;
+}
+
+	system("pause");
+	return 0;
+}
+
+
+Перечисляемый тип enum С++. Изучение С++ для начинающих. Урок #124
+class PC
+{
+public:
+
+	enum PCState
+	{
+		OFF,
+		ON,
+		SLEEP
+	};
+
+	PCState GetState() { return State; }
+	void SetState(PCState State)
+	{
+		this->State = State;
+	}
+private:
+	PCState State;
+
+};
+
+enum Speed
+{
+	MIN=150,
+	RECOMEND=600,
+	MAX=800
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+PC pc;
+pc.SetState(PC::PCState::ON);
+
+switch (pc.GetState())
+{
+case PC::PCState::ON:
+	cout << "Vkluchen" << endl;
+	break;
+case PC::PCState::SLEEP:
+	cout << "Spit" << endl;
+	break;
+case PC::PCState::OFF:
+	cout << "vikluchen" << endl;
+	break;
+}
+
+Speed sp = Speed::MAX;
+cout << sp << endl;
+
+	system("pause");
+	return 0;
+}
+
+Пространства имен с++. namespace c++ что это. Изучение С++ для начинающих. Урок #125
+
+namespace firstNS
+{
+	void Foo()
+	{
+		cout << "firstNS" << endl;
+	}
+}
+
+namespace secondNS
+{
+	void Foo()
+	{
+		cout << "secondNS" << endl;
+	}
+}
+
+namespace thidNS
+{
+	namespace secondNS
+	{
+		void Foo()
+		{
+			cout << "thindNS secondNS" << endl;
+		}
+	}
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+secondNS::Foo();
+firstNS::Foo();
+thidNS::secondNS::Foo();
+
+	system("pause");
+	return 0;
+}
+
+Шаблоны классов с++ примеры. Обобщенные классы. Изучение С++ для начинающих. Урок #126
+class Point
+{
+public:
+	Point()
+	{
+		x = y = z = 0;
+	}
+	Point(int x, int y, int z)
+	{
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+
+private:
+	int x;
+	int y;
+	int z;
+};
+template<typename T1, typename T2>
+class MyClass
+{
+public:
+	MyClass(T1 value, T2 value2)
+	{
+		this->value = value;
+	}
+
+	void DataTypeSize()
+	{
+		cout << "value"<< sizeof(value) << endl;
+		cout << "value2" << sizeof(value2) << endl;
+	}
+
+
+private:
+	T1 value
+	T2 value2;
+};
+
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	int a = 5;
+	Point b;
+	MyClass<int,Point> c(a,b);
+	c.DataTypeSize();
+
+	
+
+	system("pause");
+	return 0;
+}
+
+
+Наследование шаблонных классов. Изучение С++ для начинающих. Урок #127
+class Point
+{
+public:
+	Point()
+	{
+		x = y = z = 0;
+	}
+	Point(int x, int y, int z)
+	{
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+private:
+	int x;
+	int y;
+	int z;
+};
+
+
+template<class T1>
+class TypeSize
+{
+public:
+	TypeSize(T1 value)
+	{
+		this->value = value;
+	}
+
+	void DataTypeSize()
+	{
+		cout << "sizeof value "<< sizeof(value) << endl;
+	
+	}
+
+
+protected:
+	T1 value;
+};
+
+
+template<class T1>
+class TypeInfo :public TypeSize<T1>
+{
+public:
+	TypeInfo(T1 value):TypeSize(value)
+	{
+
+	}
+	void ShowTypeName()
+	{
+		cout << "Nazvanie tipa: " << typeid(value).name() << endl;
+	}
+};
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+	Point b(1, 12, 32);
+
+	TypeInfo<Point> d(b);
+
+	d.ShowTypeName();
+	d.DataTypeSize();
+
+
+	double a = 5;
+	TypeInfo<double> c(a);
+
+	c.ShowTypeName();
+	c.DataTypeSize();
+
+	system("pause");
+	return 0;
+}
+
+
+
+Специализация шаблона класса. Изучение С++ для начинающих. Урок #128
+template<typename T1>
+class Printer
+{
+public:
+	void Print(T1 value)
+	{
+		cout << value << endl;
+	}
+
+private:
+
+
+};
+
+
+template<>
+class Printer<string>
+{
+public:
+	void Print(string value)
+	{
+		cout << "_____________" << value << endl;
+	}
+
+};
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	Printer<string> p;
+	p.Print("Hello");
+
+	
+	system("pause");
+	return 0;
+}
+
+
+Структуры в C++ | struct C++. Разница между структурой и классом. Изучение С++ для начинающих.#129
+class MyClass // по стандарту private
+{
+public :
+	int a=10;
+};
+
+class Myclass2 : MyClass // = private MyClass
+{
+
+};
+
+struct MyStruct // по стандарту public
+{
+	int a = 2;
+};
+
+class MyStruct2 : MyStruct // =  public MyStruct
+{
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	MyClass m;
+	MyStruct ms;
+	
+	
+	system("pause");
+	return 0;
+}
+
+
+Умные указатели. Smart pointers. Изучение С++ для начинающих. Урок #130
+template<typename T>
+class SmartPointer
+{
+public:
+
+	SmartPointer(T *ptr)
+	{
+		this->ptr = ptr;
+		cout << "Constryctor" << endl;
+		
+	}
+
+	~SmartPointer()
+	{
+		delete ptr;
+		cout << "Destryctor" << endl;
+
+	}
+
+	T& operator *()
+	{
+		return *ptr;
+	}
+
+private:
+	T *ptr;
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	
+	SmartPointer<int> pointer = new int(5);
+
+	cout << *pointer << endl;
+
+
+	system("pause");
+	return 0;
+}
+
+
+auto_ptr | unique_ptr | shared_ptr | Умные указатели. Изучение С++ для начинающих. Урок #131
+Библиотека для использования #include <memory>
+//smart pointer
+//auto_ptr - сейчас не используют
+//unique_ptr
+//shared_ptr
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	
+	/*SmartPointer<int> sp1 = new int(5);
+	SmartPointer<int> sp2 = sp1; */
+
+	//auto_ptr<int> ap1(new int(5)); // делает пестым
+	//auto_ptr<int> ap2(ap1); // передает значение 5
+
+	//unique_ptr<int> p1(new int(5));
+
+	//int *p = p1.get(); // получаем указатель на пятерку
+
+	//unique_ptr<int> p2;
+
+	//p2 = move(p1); // p2.swap(p1); тоже самое что и с автопоинтером
+
+	//int *p = new int(5);
+
+	//unique_ptr<int> p1(p);
+	//p1.reset(); // затирает полностью данные
+	//p1.release(); // затирает только указатель
+
+	shared_ptr<int> p1(new int(5));
+	shared_ptr<int> p2(p1); // затирает только последнее упоминание = count = 1
+
+
+	system("pause");
+	return 0;
+}
+
+
+Динамический массив и умные указатели. Изучение С++ для начинающих. Урок #132
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	int size; 
+	cin >> size;
+
+	/*int *arr = new int [size] {1, 2, 3, 4, 5};
+
+	shared_ptr<int[]> ptr(arr);*/ // это тоже самое что и ниже 
+	
+
+	shared_ptr<int[]> ptr(new int[size] {1, 2, 3, 4, 5});
+
+	for (int i = 0; i < size; i++)
+	{
+		ptr[i] = rand()%10;
+		cout << ptr[i] << endl; // перегрузка [] уже есть программно
+	}
+
+	system("pause");
+	return 0;
+}
+
+
+
+vector | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #1
+Подключение библиотеки #include <vector>
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	vector<int> myVector;
+	
+	vector<int> myVector55(10, 55); // 10 раз по 55
+
+	cout << myVector.empty() << endl; // тру или фолс тру если есть элементы фолс нету
+
+	myVector.resize(20); // изменение размера массива 
+
+	
+
+	myVector.push_back(2);
+	myVector.push_back(2);
+	myVector.push_back(2); // добавление в конец символа
+
+	cout << myVector.at(2) << endl; // доступ к данным по границе массива
+	
+	myVector.clear(); // затирает массив
+
+	myVector.pop_back(); // затирает последний элемент
+
+	myVector.capacity(); // вместимость элемента заранее дополнительные ячейки
+	myVector.reserve(100); // указываем заранее сколько делать резервных ячеек памяти
+
+	myVector.shrink_to_fit(); // убирает лишние зарезервированные ячейки
+
+	/*cout << "size " << myVector.size() << endl;
+
+	for (int i = 0; i < myVector.size(); i++)
+	{
+		cout << myVector[i] << endl;
+	} */
+
+
+
+	system("pause");
+	return 0;
+}
+
+
+Итераторы STL | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #2
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	vector<int> myVector = { 1,2,3,4,5,6 };
+	
+	
+
+
+	for (vector<int>::iterator i = myVector.begin(); i != myVector.end(); i++) 
+	{
+		cout << *i << endl;
+	}
+
+	cout << "insert " << endl;
+	vector<int>::iterator it = myVector.begin();
+
+	advance(it, 5); // перемещение указателя на 5 элемент
+
+	myVector.insert(it, 999); // добавление 999 в определенное место it 
+
+	for (vector<int>::iterator i = myVector.begin(); i != myVector.end(); i++)
+	{
+		cout << *i << endl;
+	}
+
+
+	for (vector<int>::iterator i = myVector.begin(); i != myVector.end(); i++)
+	{
+		cout << *i << endl;
+	}
+
+	cout << endl << "erase" << endl << endl;
+	vector<int>::iterator itErase = myVector.begin();
+	myVector.erase(itErase, itErase+3); // удаляет первый элемент // перегрузка удаляем с первого по 3 элемент
+
+	for (vector<int>::iterator i = myVector.begin(); i != myVector.end(); i++)
+	{
+		cout << *i << endl;
+	}
+
+	/*vector<int>::iterator it;*/
+
+	//it = myVector.begin(); // указатель на первый элемент массива
+
+	//*it = 1000; // заменили 1 на 1000
+
+	//it++; // обращение ко второму элементу 
+
+	//it += 2; // обращение к 4 элементу 
+
+	//myVector.end(); // указатель на послепоследний элемент 
+	
+	
+
+	//for (vector<int>::const_iterator i = myVector.cbegin(); i!=myVector.cend(); i++) // цикл для обращения ко всем элементам вектора
+	//{
+	//	cout << *i << endl;
+	//}
+
+	//for (vector<int>::reverse_iterator i = myVector.rbegin(); i != myVector.rend(); i++) // с конца в начало 
+	//{
+	//	cout << *i << endl;
+	//}
+
+	//advance(it.3); // тоже самое что и *(it+3)
+
+
+	/*int arr[] = { 2,3,4,5 };
+	cout << arr[1] << endl;
+	cout << *(arr + 1) << endl;*/
+
+	system("pause");
+	return 0;
+}
+
+
+Ключевое слово auto | Изучение С++ для начинающих. Урок #136
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	auto a = 10; // автоматически определяет какой тип данных
+
+	vector<int> myVector = { 11,32,2 };
+
+	vector<int>::iterator it = myVector.begin();
+
+	auto it2= myVector.begin();
+
+	for (auto it = myVector.begin(); it!=myVector.end(); it++)
+	{
+		cout << *it << endl;
+	}
+	system("pause");
+	return 0;
+}
+
+
+LIST | STL C++ | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #3
+#include <list> подключение библиотеки
+template<typename T>
+void PrintList(const list<T>&lst)
+{
+	for (auto i = lst.cbegin(); i != lst.cend(); ++i)
+	{
+		cout << *i << endl;
+	}
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	list<int> myList = {23,33};
+	myList.push_back(5); //pop_back / pop_front - yudalenie
+	myList.push_front(1231);
+
+	myList.unique(); // удаляет дубликаты которые стоят последовательно 
+
+	myList.reverse(); // переворачивает 
+
+	myList.clear(); // удаление 
+
+	auto it = myList.begin();
+
+	advance(it, 3);
+
+	myList.insert(it, 111); // добавление 111 в 3 место 
+
+	myList.erase(it); // удаление 111 из 1 места
+
+	myList.remove(33); // удаление конкретного числа 33 если нету то не удаляет ничего 
+
+	myList.assign(3, 1232131); // удалили все прошлые и добавили 3 раза по 1232131 
+
+	list<int> test1 = { 12312,33,112 };
+	list<int> test2 = { 333,333,123 };
+	test1.assign(test2.begin(), test2.end()); // замена у первого листа значения со второго листа 
+
+	cout << "size " << myList.size() << endl; // razmer
+
+
+
+	auto it = myList.begin(); // list<int>::iterator it = myList.begin();
+	cout << *it << endl;
+
+	myList.sort();// сортировка от наименьшего к большему
+
+	PrintList(myList);
+
+	/*for (auto i = myList.begin(); i!=myList.end(); i++)
+	{
+		cout << *i << endl;
+	}
+*/
+	system("pause");
+	return 0;
+}
+
+
+Итераторы stl c++ | prefix vs postfix | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #4
+
+
+Цикл foreach C++ | range-based циклы | Изучение С++ для начинающих. Урок #137
+template<typename T>
+void PrintList(const list<T>&lst)
+{
+	for (auto i = lst.cbegin(); i != lst.cend(); ++i)
+	{
+		cout << *i << endl;
+	}
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+
+	int arr[] = { 1,3,3,5 };
+
+
+
+	/*for each (auto var in arr)
+	{
+		cout << var << endl;
+	}*/
+
+	//for (auto element : arr) 
+	//{
+	//	element = 1; // замена всех элементов на 1 без изменения arr
+	//	cout << element << endl;
+	//}
+
+	for (auto &element : arr) 
+	{
+		element = 1; // замена всех элементов на 1 c изменением arr
+		cout << element << endl;
+	}
+
+	list<int> myList = { 1,23,45,66,77 }; // аналог PrintList попроще использовать 
+	for (const auto &element : myList)
+	{
+		cout << element << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+
+
+forward list stl c++ | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #5
+#include <forward_list>
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+	forward_list<int> f1 = { 1231,12,33 };
+	f1.push_front(1);
+	f1.push_front(4);
+	
+	forward_list<int>::iterator it = f1.begin();
+	cout << *it << endl;
+	f1.insert_after(it, 9999);	
+
+	
+
+	for (auto el : f1)
+	{
+		cout << el << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+
+
+
+array STL C++ | | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #6
+#include <array> // статический массив
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+	array<int, 5>arr = { 1,2,3,4,5 };
+
+	try
+	{
+		cout << arr.at(11) << endl;
+	}
+	catch (const std::exception&ex)
+	{
+		cout << ex.what() << endl;
+	}
+
+	cout << arr.at(0) << endl; // получание данных с 0 позиции с проверкой выхода из размерности
+
+	for (int i = 0; i < arr.size(); i++)
+	{
+		cout << arr[i] << endl;
+	}
+
+
+	for (auto el : arr)
+	{
+		cout << el << endl;
+	}
+
+	arr.fill(-1); // заполнили -1
+
+	cout << arr.front() << endl; // вывод первого элемента 
+	cout << arr.back() << endl; // вывод последнего элемента
+
+	system("pause");
+	return 0;
+}
+
+
+Контейнеры STL и операторы сравнения. | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #7
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+
+	array<int, 5>arr = { 1,2,3,4,6 };
+	array<int, 5>arr2 = { 1,2,3,4,5 };
+	
+	bool result = arr > arr2; // true
+
+	cout << result << endl;
+
+	system("pause");
+	return 0;
+}
+
+
+deque stl c++ | Библиотека стандартных шаблонов (stl) | Уроки | C++ | #8
+#include <deque>
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	deque<int> dq = { 1,3,4 }; // работает по отрезкам 
+
+	
+	
+	system("pause");
+	return 0;
+}
+
+
+
+SET | MULTISET | Ассоциативные контейнеры | Библиотека стандартных шаблонов (stl) | Уроки | C++ #9
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	set<int> st; // бинарное дерево // при добавлении автоматически упорядочиваются от меньшего к большему // хранит только уникальные значения дубликаты нет 
+	st.insert(5);
+	st.insert(1);
+	st.insert(12);
+	st.insert(4);
+	st.insert(-1);
+	
+	auto it = st.find(12);
+
+	int value;
+	cin >> value;
+
+	if (st.find(value) != st.end())
+		{
+			cout << "nashel" << endl;
+		}
+		else
+		{
+			cout << "ne nashel" << endl;
+		}
+
+	st.erase(5); // удаление числа 5
+
+	/*for (auto &item : st)
+	{
+		cout << item << endl; 
+	}
+
+
+	for (int i = 0; i < 20; i++)
+	{
+		st.insert(rand() % 10);
+	}
+*/
+
+
+	multiset<int> mts = { 1,3,4,5,5 }; // тоже самое что и сет только может иметь дублированные данные
+	for (auto &item : mts)
+	{
+		cout << item << endl;
+	}
+
+	auto it1 = mts.lower_bound(1); // вернут первую единицу какую найдет 
+	auto it2 = mts.upper_bound(1); // вернет следующую за единицей цифру
+
+	auto it3 = mts.equal_range(1); // возращает диапазон чисел между lower_bound и upper_bound
+
+
+	system("pause");
+	return 0;
+}
+
+
+
+typedef c++ что это | Изучение С++ для начинающих. Урок #138
+typedef vector<int> int_vector;
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	vector<int> myVector;
+
+	int_vector myVector2;
+
+	system("pause");
+	return 0;
+}
+
+
+
+MAP | MULTIMAP | Ассоциативные контейнеры | Библиотека стандартных шаблонов (stl) | Уроки | C++ #10
+#include <map>
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	//pair<int, string> p(1,"telefone");
+	//cout << p.first << endl;
+	//cout << p.second << endl;
+
+	//map<int, string> myMap;
+	//myMap.emplace(3, "kek"); // самый норм
+	//myMap.insert(make_pair(1, "telefone"));
+	//myMap.insert(pair<int,string>(2,"netbook"));
+	//myMap.emplace(22, "kek2");
+
+	//auto it = myMap.find(22);
+	//if (it!=myMap.end())
+	//{
+	//	cout << it->second << endl;
+	//}
+	//
+	//cout<<myMap[3] << endl;
+
+	map<string, int>myMap;
+
+	myMap.emplace("Pyt9", 1313);
+	myMap.emplace("Oleg", 222);
+	myMap.emplace("Hui", 44441);
+
+	myMap["Oleg"] = 99;
+
+	myMap.at("Oleg") = 99;
+
+	myMap["Oleg hui"] = 922; // добавится новый элемент 
+
+	cout << myMap["oleg"] << endl;
+
+	myMap.erase("Oleg"); // удаление олега
+
+	multimap<string, int> myMultimap;
+
+	myMultimap.emplace("Pyt9", 1313);
+	myMultimap.emplace("Oleg", 222);
+	myMultimap.emplace("Hui", 44441);
+	myMultimap.emplace("Hui", 44441); // может хранить дубликаты
+
+	system("pause");
+	return 0;
+}
+
+
+Stack | Адаптеры контейнеров | Библиотека стандартных шаблонов (stl) | Уроки | C++ #11
+#include <stack>
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	stack<int,vector<int>>st;
+
+	
+
+	st.push(2);
+	st.push(2);
+	st.push(2);
+	st.emplace(9);
+
+	auto a = st._Get_container(); // а у нас стал как дек со значениями стэка
+
+	cout << a[2] << endl;
+
+	st.size();
+	st.empty();
+	st.top();  // послейдний элемент который мы добавили
+
+	st.pop(); // удалит последний элемент который мы добавили 
+
+
+	while (!st.empty())
+	{
+		cout << st.top() << endl;
+		st.pop;
+	}
+
+
+	
+
+	system("pause");
+	return 0;
+}
+
+
+
+queue | priority queue | Адаптеры контейнеров | Библиотека стандартных шаблонов (stl) | C++ #12
+#include<queue>
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	queue<int,list<int>> q;
+	q.back(); // доступ к последнему элементу который мы добавили // сылка на него
+	q.emplace(); // добавление новго элемента
+	q.empty(); 
+	q.front(); // первый элемент
+	q.pop(); // извелечение из очереди 
+	q.size();
+	//q.swap(); // для обмена с одного контейнера до другого
+
+
+	q.push(2);
+	q.push(3);
+	q.push(5);
+	q.push(7);
+
+
+	auto a = q._Get_container();
+
+
+
+	priority_queue<int> q1; // отсортированный от большего к меньшему
+
+
+	q1.push(2);
+	q1.push(3);
+	q1.push(5);
+	q1.push(7);
+	
+
+
+	system("pause");
+	return 0;
+}
+
+
+
+Многофайловый проект | Изучение С++ для начинающих. Урок #139
+
+
+
+Многофайловый проект | Защита от повторного включения | Изучение С++ для начинающих. Урок #140
+#pragma once // предотвращает повторного включения 
+#pragma once
+#ifdef _FOO_H_
+#define _FOO_H_
+
+#include "Bar.h"
+void Foo();
+
+#endif // _FOO_H_
+
+#pragma once
+#ifdef _BAR_H_
+#define _BAR_H_
+
+#include "Foo.h"
+void Bar();
+
+#endif // _BAR_H_
+
+
+
+Union | Использование в С++ | Изучение С++ для начинающих. Урок #141
+union MyUnion // объдиняет в памяти все эти три значения и выделяет память под самый большгой элемент опасно использовать 
+{
+	short int a;
+	int b;
+	float c;
+};
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	MyUnion u;
+
+	u.a = 5;
+	u.b = 2323;
+	u.c = 43.34;
+	
+
+	system("pause");
+	return 0;
+}
+
+
+std::function | Полиморфная обёртка функции | Изучение С++ для начинающих. Урок #142
+#include<functional> 
+void Foo(int a)
+{ 
+	if (a>10 && a<40)
+	{
+		cout << a << endl;
+	}
+}
+
+void Bar(int a)
+{
+	if (a %2==0)
+	{
+		cout << a << endl;
+	}
+}
+
+int Sum(int a, int b)
+{
+	return a + b;
+}
+
+void DoWork(vector<int> &vc, vector<function<void(int)>> funcVector)
+{
+	for (auto el : vc)
+	{
+		for (auto &fel : funcVector)
+		{
+			fel(el);	
+		}
+	}
+}
+
+void DoWork1(vector<int> &vc, function<void(int)> func)
+{
+	for (auto el : vc)
+	{
+		func(el);
+	}
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	function<void(int)> f;
+	DoWork1(vc, f);
+
+	system("pause");
+	return 0;
+}
+
+
+Лямбда-выражения | Лямбда функции | Анонимные функции | Изучение С++ для начинающих. Урок #143
+void DoWork1(vector<int> &vc, function<void(int)> func)
+{
+	for (auto el : vc)
+	{
+		func(el);
+	}
+}
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	vector<int>vc = { 1,32,44,3,13,56,78,99,00 };
+
+	function<void(int)> f;
+
+
+	f=[](int a)
+	{
+		cout << "Vizvana func anonim - " << a<<endl;
+	};
+
+	DoWork1(vc, f);
+
+	system("pause");
+	return 0;
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+void DoWork1(vector<int> &vc, function<void(int)> func)
+{
+	for (auto el : vc)
+	{
+		func(el);
+	}
+}
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	vector<int>vc = { 1,32,44,3,13,56,78,99,00 };
+
+
+	DoWork1(vc, [](int a)
+	{
+		cout << "Vizvana func anonim - " << a << endl;
+	});
+
+	system("pause");
+	return 0;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "ru");
+
+	int p=0;
+
+	auto f= [&p]()
+	{
+		p = 5;
+	};
+	
+	f();
+	
+	/*vector<int>vc = { 1,32,44,3,13,56,78,99,00 };
+
+	DoWork1(vc, [](int a)
+	{
+		cout << "Vizvana func anonim - " << a << endl;
+	});*/
+
+	system("pause");
+	return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////

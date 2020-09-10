@@ -1,0 +1,22 @@
+//Напишите программу, проверяющую число, введенное с клавиатуры на четность.
+
+#include<iostream>
+using namespace std;
+
+void main()
+{
+setlocale(LC_ALL, "ru");
+int var;
+cout « "Введите число для проверки на чётность: ";
+cin » var;
+
+if (var%2==0)
+{
+cout « "Число " « var « " чётное!" « endl;
+}
+else
+{
+cout « "Число " « var « " нечётное!" « endl;
+}
+
+}
